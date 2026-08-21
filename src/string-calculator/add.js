@@ -2,7 +2,7 @@ function add(input) {
   if (input === "") {
     return "0"
   }
-  return "1"
+  return input
 }
 
 module.exports = add;
