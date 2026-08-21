@@ -12,4 +12,8 @@ describe('add', () => {
   test('returns 5 when given 5', () => {
     expect(add("5")).toBe("5");
   });
+
+  test('returns 5 when given 5', () => {
+    expect(add("1,1")).toBe("2");
+  });
 });
