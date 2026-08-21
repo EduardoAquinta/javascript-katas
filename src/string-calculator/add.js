@@ -1,5 +1,8 @@
-function add() {
-  return "0";
+function add(input) {
+  if (input === "") {
+    return "0"
+  }
+  return "1"
 }
 
 module.exports = add;
