@@ -4,8 +4,8 @@ Welcome! This repository is bootstrapped for practicing **Test-Driven Developmen
 
 ## Project Structure
 
-- `returnsTrue.js`: Contains the implementation of the `returnsTrue` function.
-- `returnsTrue.test.js`: Contains the test suite for `returnsTrue` with two unit tests (one passing, one intentionally failing).
+- `add.js`: Contains the implementation of the `returnsTrue` function.
+- `add.test.js`: Contains the test suite for `returnsTrue` with two unit tests (one passing, one intentionally failing).
 - `package.json`: Project configuration and npm scripts.
 
 ---
@@ -41,6 +41,6 @@ TDD follows a simple 3-step cycle:
 3. **Refactor**: Clean up the code while keeping all tests passing.
 
 ### Next Steps for You:
-1. Open [`returnsTrue.test.js`](file:///Users/eddieashton/Desktop/Dave/tdd-practise/string-calculator/returnsTrue.test.js).
+1. Open [`add.test.js`](file:///Users/eddieashton/Desktop/Dave/tdd-practise/string-calculator/returnsTrue.test.js).
 2. Examine the failing test. Fix or edit the expectation, or write a new test for a new function!
 3. Add a new function in a new file (e.g. for a String Calculator kata) and follow the TDD process!
