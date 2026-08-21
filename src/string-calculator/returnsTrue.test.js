@@ -1,4 +1,4 @@
-const returnsTrue = require('./returnsTrue');
+const add = require('./add');
 
 describe('add', () => {
   test('returns 0 when given an empty string', () => {

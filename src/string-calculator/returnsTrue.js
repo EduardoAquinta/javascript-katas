@@ -1,5 +1,5 @@
-function returnsTrue() {
+function add() {
   return true;
 }
 
-module.exports = returnsTrue;
+module.exports = add;
