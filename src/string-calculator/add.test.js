@@ -25,4 +25,8 @@ describe('add', () => {
       expect(add(input)).toBe(expected);
     });
   });
+
+  test('returns an error when given adjacent separators', () => {
+    expect(add("175.2,\n35")).toBe("Number expected but '\n' found at position 6.");
+  });
 });
