@@ -11,6 +11,15 @@ describe('add', () => {
       ["5", "5"],
       ["1,1", "2"],
       ["1.1,2.2", "3.3"],
+      ["1,2,3,4,5", "15"],
+    ])('returns %s when given %s', (input, expected) => {
+      expect(add(input)).toBe(expected);
+    });
+  });
+
+  describe('can use comma or new line as the separator', () => {
+    test.each([
+      ["1\n2", "3"],
     ])('returns %s when given %s', (input, expected) => {
       expect(add(input)).toBe(expected);
     });
