@@ -21,12 +21,19 @@ describe('add', () => {
     test.each([
       ["1\n2", "3"],
       ["1\n2\n3,4,5", "15"]
-    ])('returns %s when given %s', (input, expected) => {
+    ])('given "%s" returns "%s"', (input, expected) => {
+      // Todo: Newlines hidden in test output
       expect(add(input)).toBe(expected);
     });
   });
 
-  test('returns an error when given adjacent separators', () => {
-    expect(add("175.2,\n35")).toBe("Number expected but '\n' found at position 6.");
+  describe('returns an error when given adjacent separators', () => {
+    // expect(add("175.2,\n35")).toBe("Number expected but '\n' found at position 6.");
+    test.each([
+      ["175.2,\n35", "Number expected but '\n' found at position 6."],
+      ["175.2\n,35", "Number expected but ',' found at position 6."],
+    ])('given "%s" returns "%s"', (input, expected) => {
+      expect(add(input)).toBe(expected);
+    });
   });
 });
