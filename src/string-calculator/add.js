@@ -6,7 +6,8 @@ function add(input) {
   for (const number of input.split(",")) {
     total+= Number(number);
   }
-  return total.toString();
+
+  return (Math.round(total * 1e10) / 1e10).toString()
 }
 
 module.exports = add;

@@ -18,6 +18,6 @@ describe('add', () => {
   });
 
     test('returns 3.3 when given 1.1, 2.2', () => {
-    expect(add("1.2,2.2")).toBe("3.3");
+    expect(add("1.1,2.2")).toBe("3.3");
   });
 });
