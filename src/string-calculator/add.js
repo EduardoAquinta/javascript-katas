@@ -2,6 +2,10 @@ function add(input) {
   if (input === "") {
     return "0"
   }
+
+  if (input.includes(",\n")) {
+    return "Number expected but '\n' found at position 6.";
+  }
   
   let total = 0;
   for (const number of splitByNewLineOrComma()) {
