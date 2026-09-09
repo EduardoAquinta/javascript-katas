@@ -20,6 +20,7 @@ describe('add', () => {
   describe('can use comma or new line as the separator', () => {
     test.each([
       ["1\n2", "3"],
+      ["1\n2\n3,4,5", "15"]
     ])('returns %s when given %s', (input, expected) => {
       expect(add(input)).toBe(expected);
     });
