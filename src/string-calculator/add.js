@@ -8,7 +8,7 @@ function add(input) {
   }
 
   let total = 0;
-  for (const number of input.split(",")) {
+  for (const number of input.split("\n").join(",").split(",")) {
     total+= Number(number);
   }
 
