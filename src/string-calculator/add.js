@@ -4,28 +4,28 @@ function add(input) {
     return "0"
   }
 
-  const error = validateInput(input);
+  const error = _validateInput(input);
   if (error) {
     return error;
   }
 
   let total = 0;
-  for (const number of splitByNewLineOrComma()) {
+  for (const number of _splitByNewLineOrComma(input)) {
     total+= Number(number);
   }
 
-  return numberWithoutFloatingPointErrors().toString()
+  return _numberWithoutFloatingPointErrors(total).toString()
 
-  function splitByNewLineOrComma() {
+  // Private functions
+  function _splitByNewLineOrComma(input) {
     return input.split("\n").join(",").split(",");
   }
 
-  function numberWithoutFloatingPointErrors() {
+  function _numberWithoutFloatingPointErrors(total) {
     return Math.round(total * 1e10) / 1e10;
   }
-}
 
-  function validateInput(input) {
+  function _validateInput(input) {
     const adjacentSeparators = [",\n", "\n,", "\n\n", ",,"];
     for (const separatorPair of adjacentSeparators) {
       const index = input.indexOf(separatorPair);
@@ -34,6 +34,7 @@ function add(input) {
       }
     }
   }
+}
 
 
 module.exports = add;
