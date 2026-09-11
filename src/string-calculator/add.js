@@ -3,14 +3,14 @@ function add(input) {
     return "0"
   }
 
-  if (input.includes(",\n") || input.includes("\n\n")) {
-    return "Number expected but '\n' found at position 6.";
-  }
+  adjacentSeparators = [",\n", "\n,", "\n\n", ",,"];
 
-  if (input.includes("\n,") || input.includes(",,")) {
-    return "Number expected but ',' found at position 6.";
-  }
-  
+  for (const separator of adjacentSeparators) {
+    const index = input.indexOf(separator);
+    if (index !== -1) {
+      return `Number expected but '${separator[1]}' found at position ${index + 1}.`;
+    }
+  };
   let total = 0;
   for (const number of splitByNewLineOrComma()) {
     total+= Number(number);
