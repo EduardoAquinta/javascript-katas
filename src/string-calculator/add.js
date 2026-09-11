@@ -3,11 +3,11 @@ function add(input) {
     return "0"
   }
 
-  if (input.includes(",\n")) {
+  if (input.includes(",\n") || input.includes("\n\n")) {
     return "Number expected but '\n' found at position 6.";
   }
 
-  if (input.includes("\n,")) {
+  if (input.includes("\n,") || input.includes(",,")) {
     return "Number expected but ',' found at position 6.";
   }
   
