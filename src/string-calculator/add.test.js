@@ -32,6 +32,8 @@ describe('add', () => {
     test.each([
       ["175.2,\n35", "Number expected but '\n' found at position 6."],
       ["175.2\n,35", "Number expected but ',' found at position 6."],
+      ["175.2\n\n35", "Number expected but ',' found at position 6."],
+      ["175.2,,35", "Number expected but ',' found at position 6."],
     ])('given "%s" returns "%s"', (input, expected) => {
       expect(add(input)).toBe(expected);
     });
