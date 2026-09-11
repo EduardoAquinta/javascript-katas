@@ -1,16 +1,14 @@
 function add(input) {
+
   if (input === "") {
     return "0"
   }
 
-  adjacentSeparators = [",\n", "\n,", "\n\n", ",,"];
+  const error = validateInput(input);
+  if (error) {
+    return error;
+  }
 
-  for (const separator of adjacentSeparators) {
-    const index = input.indexOf(separator);
-    if (index !== -1) {
-      return `Number expected but '${separator[1]}' found at position ${index + 1}.`;
-    }
-  };
   let total = 0;
   for (const number of splitByNewLineOrComma()) {
     total+= Number(number);
@@ -26,5 +24,16 @@ function add(input) {
     return Math.round(total * 1e10) / 1e10;
   }
 }
+
+  function validateInput(input) {
+    const adjacentSeparators = [",\n", "\n,", "\n\n", ",,"];
+    for (const separatorPair of adjacentSeparators) {
+      const index = input.indexOf(separatorPair);
+      if (index !== -1) {
+        return `Number expected but '${separatorPair[1]}' found at position ${index + 1}.`;
+      }
+    }
+  }
+
 
 module.exports = add;
