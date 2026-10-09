@@ -26,6 +26,11 @@ function add(input) {
   }
 
   function _validateInput(input) {
+
+    if (input.endsWith("\n") || input.endsWith(",")) {
+      return 'Number expected but EOF found.';
+    }
+
     const adjacentSeparators = [",\n", "\n,", "\n\n", ",,"];
     for (const separatorPair of adjacentSeparators) {
       const index = input.indexOf(separatorPair);
