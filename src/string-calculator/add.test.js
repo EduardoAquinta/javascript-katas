@@ -50,7 +50,7 @@ describe('add', () => {
 
   describe('can use customer seperators', () => {
   test.each([
-    ["//;\n1;2", 3],
+    ["//;\n1;2", "3"],
     // ["//|\n1|2|3", "6"],
     // ["//sep\n2sep3", "5"]
   ])('given "%s" returns "%s"', (input, expected) => {
@@ -58,3 +58,5 @@ describe('add', () => {
     });
   });
 });
+
+

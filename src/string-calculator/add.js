@@ -5,6 +5,16 @@ function add(input) {
   }
 
   try {
+    if(input.startsWith("//")){
+      let cleanse = input.substring(2)
+      const arr = cleanse.split("\n");
+      const separator = arr[0];
+      input = arr[1].replace(separator, ",");
+    }
+
+
+    // Todo: Replace new lines in input with commas
+
     const error = _validateInput(input);
     if (error) {
       return error;
@@ -22,6 +32,7 @@ function add(input) {
 
   // Private functions
   function _splitByNewLineOrComma(input) {
+    // Simplify below when only needs to handle commas
     return input.split("\n").join(",").split(",");
   }
 
