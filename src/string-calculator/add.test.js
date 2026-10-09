@@ -38,12 +38,23 @@ describe('add', () => {
       expect(add(input)).toBe(expected);
     });
   });
+
   describe('returns an error when the last character is a seperator', () => {
   test.each([
     ["1,1,"],
     ["1,1\n"]
   ])('given "%s" returns "%s"', (input) => {
       expect(add(input)).toBe("Number expected but EOF found.");
+    });
+  });
+
+  describe('can use customer seperators', () => {
+  test.each([
+    ["//;\n1;2", 3],
+    // ["//|\n1|2|3", "6"],
+    // ["//sep\n2sep3", "5"]
+  ])('given "%s" returns "%s"', (input, expected) => {
+      expect(add(input)).toBe(expected);
     });
   });
 });
