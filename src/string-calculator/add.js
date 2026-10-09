@@ -9,9 +9,8 @@ function add(input) {
       let cleanse = input.substring(2)
       const arr = cleanse.split("\n");
       const separator = arr[0];
-      input = arr[1].replace(separator, ",");
+      input = arr[1].replaceAll(separator, ",");
     }
-
 
     // Todo: Replace new lines in input with commas
 
