@@ -3,7 +3,7 @@ function add(input) {
   if (input === "") {
     return "0"
   }
-
+// eddie to refactor now
   try {
     if(input.startsWith("//")){
       let cleanse = input.substring(2)
