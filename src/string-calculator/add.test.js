@@ -28,7 +28,6 @@ describe('add', () => {
   });
 
   describe('returns an error when given adjacent separators', () => {
-    // expect(add("175.2,\n35")).toBe("Number expected but '\n' found at position 6.");
     test.each([
       ["175.2,\n35", "Number expected but '\n' found at position 6."],
       ["175.2\n,35", "Number expected but ',' found at position 6."],
@@ -37,6 +36,14 @@ describe('add', () => {
       ["17,,5", "Number expected but ',' found at position 3."],
     ])('given "%s" returns "%s"', (input, expected) => {
       expect(add(input)).toBe(expected);
+    });
+  });
+  describe('returns an error when the last character is a seperator', () => {
+  test.each([
+    ["1,1,"],
+    ["1,1\n"]
+  ])('given "%s" returns "%s"', (input) => {
+      expect(add(input)).toBe("Number expected but EOF found.");
     });
   });
 });
