@@ -27,10 +27,21 @@ function add(input) {
 
   function _validateInput(input) {
 
-    if (input.endsWith("\n") || input.endsWith(",")) {
+    if (_endsWithSeparator(input)) {
       return 'Number expected but EOF found.';
     }
 
+    const hasAdjacentSeparators = _hasAdjacentSeparators(input);
+    if (hasAdjacentSeparators !== null) {
+      return hasAdjacentSeparators;
+    }
+  }
+
+  function _endsWithSeparator(input) {
+    return input.endsWith("\n") || input.endsWith(",");
+  }
+
+  function _hasAdjacentSeparators(input) {
     const adjacentSeparators = [",\n", "\n,", "\n\n", ",,"];
     for (const separatorPair of adjacentSeparators) {
       const index = input.indexOf(separatorPair);
