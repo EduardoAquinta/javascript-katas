@@ -4,17 +4,21 @@ function add(input) {
     return "0"
   }
 
-  const error = _validateInput(input);
-  if (error) {
-    return error;
-  }
+  try {
+    const error = _validateInput(input);
+    if (error) {
+      return error;
+    }
 
-  let total = 0;
-  for (const number of _splitByNewLineOrComma(input)) {
-    total+= Number(number);
-  }
+    let total = 0;
+    for (const number of _splitByNewLineOrComma(input)) {
+      total += Number(number);
+    }
 
-  return _numberWithoutFloatingPointErrors(total).toString()
+    return _numberWithoutFloatingPointErrors(total).toString()
+  } catch (error) {
+    return error.message;
+  }
 
   // Private functions
   function _splitByNewLineOrComma(input) {
@@ -26,19 +30,14 @@ function add(input) {
   }
 
   function _validateInput(input) {
-
-    if (_endsWithSeparator(input)) {
-      return 'Number expected but EOF found.';
-    }
-
-    const hasAdjacentSeparators = _hasAdjacentSeparators(input);
-    if (hasAdjacentSeparators !== null) {
-      return hasAdjacentSeparators;
-    }
+    _endsWithSeparator(input);
+    _hasAdjacentSeparators(input);
   }
 
   function _endsWithSeparator(input) {
-    return input.endsWith("\n") || input.endsWith(",");
+    if (input.endsWith("\n") || input.endsWith(",")) {
+      throw new Error('Number expected but EOF found.');
+    }
   }
 
   function _hasAdjacentSeparators(input) {
@@ -46,7 +45,7 @@ function add(input) {
     for (const separatorPair of adjacentSeparators) {
       const index = input.indexOf(separatorPair);
       if (index !== -1) {
-        return `Number expected but '${separatorPair[1]}' found at position ${index + 1}.`;
+        throw new Error(`Number expected but '${separatorPair[1]}' found at position ${index + 1}.`);
       }
     }
   }
